@@ -8,6 +8,8 @@ import NotFound from "./pages/Error";
 import './App.css';
 import About from "./pages/About";
 
+const URL = process.env.PUBLIC_URL;
+
 const App = () => {
   const isIphone12 = useMedia("(max-width: 768px)");
   return (
