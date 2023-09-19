@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { noun, verb, adjective, adverbs } from "../library/wordBank";
+import "../App.css";
 
 const QuizSetting = () => {
   const [quantityValue, setQuantityValue] = useState(20);
@@ -68,29 +69,28 @@ const QuizSetting = () => {
 
   return (
     <>
-      <>
-        <h2>クイズを出題するよ</h2>
-      </>
-      <>
+      <h2>クイズを出題するよ</h2>
+      <p>問題数設定</p>
+      <div>
+        <label className="number-spinner-wrap" htmlFor="quantity">
+          <input
+            className="number-spinner-input"
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            max="1014"
+            step="1"
+            value={quantityValue}
+            onChange={handleQuantityChange}
+          />
+          <span className="spinner spinner-down">-</span>
+          <span className="spinner spinner-up">+</span>
+        </label>
+      </div>
+      <div className="check-label-wrap">
         <div>
-          <label htmlFor="quantity">
-            問題数設定
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              min="1"
-              max="1014"
-              step="1"
-              value={quantityValue}
-              onChange={handleQuantityChange}
-            />
-            <span class="spinner spinner-down">-</span>
-            <span class="spinner spinner-up">+</span>
-          </label>
-        </div>
-        <div>
-          <label>
+          <label className="check-label check-noun">
             <input
               type="checkbox"
               id="noun"
@@ -103,7 +103,7 @@ const QuizSetting = () => {
           </label>
         </div>
         <div>
-          <label>
+          <label className="check-label check-verb">
             <input
               type="checkbox"
               id="verb"
@@ -116,7 +116,7 @@ const QuizSetting = () => {
           </label>
         </div>
         <div>
-          <label>
+          <label className="check-label check-adj">
             <input
               type="checkbox"
               id="adjective"
@@ -129,7 +129,7 @@ const QuizSetting = () => {
           </label>
         </div>
         <div>
-          <label>
+          <label className="check-label check-adv">
             <input
               type="checkbox"
               id="adverbs"
@@ -141,8 +141,10 @@ const QuizSetting = () => {
             副詞
           </label>
         </div>
+      </div>
+      <div className="start-button">
         <button onClick={handleStartQuiz}>開始</button>
-      </>
+      </div>
     </>
   );
 };
