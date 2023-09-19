@@ -6,9 +6,11 @@ const NotFound = () => {
   return (
     <>
       <h3>你好！要玩吗？</h3>
-      <button onClick={() => {
-        setIsConfirmed(true);
-      }}>
+      <button
+        onClick={() => {
+          setIsConfirmed(true);
+        }}
+      >
         玩！
       </button>
       {isConfirmed && <Navigate to="/" />}

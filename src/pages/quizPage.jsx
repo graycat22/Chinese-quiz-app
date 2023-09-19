@@ -4,15 +4,21 @@ import { shuffleArray } from "./quizSetting";
 
 const QuizPage = () => {
   const { state } = useLocation();
-  const { quantityValue, quizArray: initialQuizArray, randomArray: initialRandomArray } = state;
+  const {
+    quantityValue,
+    quizArray: initialQuizArray,
+    randomArray: initialRandomArray,
+  } = state;
   const quizArray = initialQuizArray;
-  const [ showContent, setShowContent] = useState(true);
-  const [ currentQuizIndex, setCurrentQuizIndex ] = useState(0);
-  const [ isSelected, setIsSelected ] = useState(true);
-  const [ isCorrect, setIsCorrect ] = useState(null);
+  const [showContent, setShowContent] = useState(true);
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
+  const [isSelected, setIsSelected] = useState(true);
+  const [isCorrect, setIsCorrect] = useState(null);
 
   // randomArrayはSettingのquizArrayと同じ。つまりユーザが選んだ品詞の全単語が入ってる。
-  const randomArray = initialRandomArray.filter((item) => item.品詞 === quizArray[currentQuizIndex].品詞);
+  const randomArray = initialRandomArray.filter(
+    (item) => item.品詞 === quizArray[currentQuizIndex].品詞
+  );
 
   const getRandomInt = (max) => {
     return Math.floor(Math.random() * max);
@@ -25,10 +31,12 @@ const QuizPage = () => {
       const randomObj = randomArray[randomNum];
       fakeArray.push(randomObj);
     }
-    if (!fakeArray.some((item) => item.単語 === quizArray[currentQuizIndex].単語)) {
+    if (
+      !fakeArray.some((item) => item.単語 === quizArray[currentQuizIndex].単語)
+    ) {
       fakeArray.splice(3, 0, quizArray[currentQuizIndex]);
     }
-    const slicedArray = fakeArray.slice(0, 4)
+    const slicedArray = fakeArray.slice(0, 4);
     shuffleArray(slicedArray);
     return slicedArray;
   };
@@ -41,19 +49,17 @@ const QuizPage = () => {
 
   const handleSendAnswer = (meaning) => {
     if (currentQuizIndex < quantityValue - 1) {
-
       if (meaning === "next") {
         setCurrentQuizIndex(currentQuizIndex + 1);
         setIsSelected(!isSelected);
         setIsCorrect(null);
-      } else if (meaning === quizArray[currentQuizIndex].意味){
+      } else if (meaning === quizArray[currentQuizIndex].意味) {
         setIsSelected(!isSelected);
         setIsCorrect(true);
       } else if (meaning !== quizArray[currentQuizIndex].意味) {
         setIsSelected(!isSelected);
         setIsCorrect(false);
       }
-
     } else {
       setShowContent(false);
     }
@@ -62,42 +68,45 @@ const QuizPage = () => {
   return (
     <>
       <h2>クイズページ</h2>
-      
+
       <>
         {showContent ? (
           isSelected ? (
             <div className="quizWrap">
               <div>
                 <p>
-                  第{currentQuizIndex + 1}問！{ quizArray[currentQuizIndex].単語 }
+                  第{currentQuizIndex + 1}問！{quizArray[currentQuizIndex].単語}
                 </p>
                 {fakeArray.slice(0, 4).map((fakeItem, index) => (
-                  <button key={index} onClick={() => handleAnswerQuiz(fakeItem.意味)}>
+                  <button
+                    key={index}
+                    onClick={() => handleAnswerQuiz(fakeItem.意味)}
+                  >
                     {fakeItem.意味}
                   </button>
                 ))}
               </div>
-                <Link to="/quizSetting">
-                  <button>Back</button>
-                </Link>
+              <Link to="/quizSetting">
+                <button>Back</button>
+              </Link>
             </div>
-            ) : (
-              <div>
-                {isCorrect === true && (
-                  <div>
-                    <p>正解！</p>
-                    <button onClick={() => handleSendAnswer("next")}>次へ</button>
-                  </div>
-                )}
-                {isCorrect === false && (
-                  <div>
-                    <p>残念。正解は{quizArray[currentQuizIndex].意味}でした。</p>
-                    <button onClick={() => handleSendAnswer("next")}>次へ</button>
-                  </div>
-                )}
-              </div>
-            )
           ) : (
+            <div>
+              {isCorrect === true && (
+                <div>
+                  <p>正解！</p>
+                  <button onClick={() => handleSendAnswer("next")}>次へ</button>
+                </div>
+              )}
+              {isCorrect === false && (
+                <div>
+                  <p>残念。正解は{quizArray[currentQuizIndex].意味}でした。</p>
+                  <button onClick={() => handleSendAnswer("next")}>次へ</button>
+                </div>
+              )}
+            </div>
+          )
+        ) : (
           <div>
             <p>お疲れ様でした</p>
             <Link to="/">
@@ -108,16 +117,15 @@ const QuizPage = () => {
             </Link>
           </div>
         )}
-      
-      
       </>
 
-      
       <>
         <p>問題数: {quantityValue}</p>
         {quizArray.map((quiz, index) => (
           <div key={index}>
-            <p>第{index+1}問：{quiz.単語}、{quiz.拼音}、{quiz.品詞}</p>
+            <p>
+              第{index + 1}問：{quiz.単語}、{quiz.拼音}、{quiz.品詞}
+            </p>
           </div>
         ))}
       </>
