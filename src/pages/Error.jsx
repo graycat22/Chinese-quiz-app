@@ -5,11 +5,11 @@ const NotFound = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   return (
     <>
-      <h3>ページが見つかりません</h3>
+      <h3>你好！要玩吗？</h3>
       <button onClick={() => {
         setIsConfirmed(true);
       }}>
-        確認
+        玩！
       </button>
       {isConfirmed && <Navigate to="/" />}
     </>
