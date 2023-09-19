@@ -1,34 +1,32 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import { useMedia } from "react-use";
 import Home from "./pages/Home";
-import QuizSetting from './pages/quizSetting';
+import QuizSetting from "./pages/quizSetting";
 import QuizPage from "./pages/quizPage";
-import VocaBook from './pages/vocaBook';
+import VocaBook from "./pages/vocaBook";
 import NotFound from "./pages/Error";
-import './App.css';
+import "./App.css";
 import About from "./pages/About";
-
-const URL = process.env.PUBLIC_URL;
 
 const App = () => {
   const isIphone12 = useMedia("(max-width: 768px)");
   return (
     <div id="App">
-      { isIphone12 ?
+      {isIphone12 ? (
         <>
           <h1>クイズアプリ</h1>
           <ul>
             <li>
-              <NavLink 
-                className={({ isActive }) => ( isActive ? "active" : undefined )}
+              <NavLink
+                className={({ isActive }) => (isActive ? "active" : undefined)}
                 to="/"
               >
                 ホーム
               </NavLink>
             </li>
             <li>
-              <NavLink 
-                className={({ isActive }) => ( isActive ? "active" : undefined )}
+              <NavLink
+                className={({ isActive }) => (isActive ? "active" : undefined)}
                 to="/quizSetting"
               >
                 クイズページ
@@ -36,7 +34,7 @@ const App = () => {
             </li>
             <li>
               <NavLink
-                className={({ isActive }) => ( isActive ? "active" : undefined )}
+                className={({ isActive }) => (isActive ? "active" : undefined)}
                 to="/vocaBook"
               >
                 単語帳
@@ -44,11 +42,11 @@ const App = () => {
             </li>
           </ul>
         </>
-        :
+      ) : (
         <p>パソコン非対応です</p>
-      }
+      )}
       <Routes>
-        <Route index element={<Home />} />
+        <Route path="/quiz-app" element={<Home />} /> {/* indexから変更 */}
         <Route path="/quizSetting" element={<QuizSetting />} />
         <Route path="/quizPage" element={<QuizPage />} />
         <Route path="/vocaBook" element={<VocaBook />} />

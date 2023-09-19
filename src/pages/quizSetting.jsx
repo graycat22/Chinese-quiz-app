@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { noun, verb, adjective, adverbs } from "../library/wordBank";
-import QuizPage from "./quizPage";
 
 const QuizSetting = () => {
   const [quantityValue, setQuantityValue] = useState(20);
