@@ -11,7 +11,7 @@ const QuizPage = () => {
   const [ isSelected, setIsSelected ] = useState(true);
   const [ isCorrect, setIsCorrect ] = useState(null);
 
-  //randomArrayはSettingのquizArrayと同じ。つまりユーザが選んだ品詞の全単語が入ってる。
+  // randomArrayはSettingのquizArrayと同じ。つまりユーザが選んだ品詞の全単語が入ってる。
   const randomArray = initialRandomArray.filter((item) => item.品詞 === quizArray[currentQuizIndex].品詞);
 
   const getRandomInt = (max) => {
