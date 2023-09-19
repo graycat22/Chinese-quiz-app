@@ -11,10 +11,6 @@ const QuizPage = () => {
   const [ isSelected, setIsSelected ] = useState(true);
   const [ isCorrect, setIsCorrect ] = useState(null);
 
-  console.log("true");
-  console.log("initialクイズ配列", initialQuizArray);
-  console.log("initialランダム配列", initialRandomArray);
-
   //randomArrayはSettingのquizArrayと同じ。つまりユーザが選んだ品詞の全単語が入ってる。
   const randomArray = initialRandomArray.filter((item) => item.品詞 === quizArray[currentQuizIndex].品詞);
 
@@ -38,8 +34,6 @@ const QuizPage = () => {
   };
 
   const fakeArray = getFakeAnswer();
-
-  console.log("スライス配列", fakeArray);
 
   const handleAnswerQuiz = (array) => {
     handleSendAnswer(array);
