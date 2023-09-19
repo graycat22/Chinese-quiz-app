@@ -1,25 +1,58 @@
-import logo from './logo.svg';
+import { Routes, Route, NavLink } from "react-router-dom";
+import { useMedia } from "react-use";
+import Home from "./pages/home";
+import QuizSetting from './pages/quizSetting';
+import QuizPage from "./pages/quizPage";
+import VocaBook from './pages/vocaBook';
+import NotFound from "./pages/notFound";
 import './App.css';
 
-function App() {
+const App = () => {
+  const isIphone12 = useMedia("(max-width: 768px)");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="App">
+      { isIphone12 ?
+        <>
+          <h1>クイズアプリ</h1>
+          <ul>
+            <li>
+              <NavLink 
+                className={({ isActive }) => ( isActive ? "active" : undefined )}
+                to="/"
+              >
+                ホーム
+              </NavLink>
+            </li>
+            <li>
+              <NavLink 
+                className={({ isActive }) => ( isActive ? "active" : undefined )}
+                to="/quizSetting"
+              >
+                クイズページ
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) => ( isActive ? "active" : undefined )}
+                to="/vocaBook"
+              >
+                単語帳
+              </NavLink>
+            </li>
+          </ul>
+        </>
+        :
+        <p>パソコン非対応です</p>
+      }
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/quizSetting" element={<QuizSetting />} />
+        <Route path="/quizPage" element={<QuizPage />} />
+        <Route path="/vocaBook" element={<VocaBook />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
