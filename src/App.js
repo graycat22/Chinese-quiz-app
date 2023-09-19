@@ -46,6 +46,7 @@ const App = () => {
         <p>パソコン非対応です</p>
       )}
       <Routes>
+        <Route index element={<Home />} />
         <Route path="/quiz-app" element={<Home />} /> {/* indexから変更 */}
         <Route path="/quizSetting" element={<QuizSetting />} />
         <Route path="/quizPage" element={<QuizPage />} />
