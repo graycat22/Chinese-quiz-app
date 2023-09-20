@@ -120,7 +120,8 @@ button:hover {
   transition: 0.5s;
 }
 
-.start-button::after {
+.start-button::after,
+.slide-button::after {
   position: absolute;
   content: "";
   top: 0;

@@ -19,6 +19,7 @@ const QuizPage = () => {
   const randomArray = initialRandomArray.filter(
     (item) => item.品詞 === quizArray[currentQuizIndex].品詞
   );
+  //問題の品詞と同じ品詞の単語を抽出して配列化
 
   const getRandomInt = (max) => {
     return Math.floor(Math.random() * max);
@@ -31,17 +32,33 @@ const QuizPage = () => {
       const randomObj = randomArray[randomNum];
       fakeArray.push(randomObj);
     }
+    const randomArray_ = [...fakeArray];
+    console.log("randomArray_:", randomArray_);
     if (
       !fakeArray.some((item) => item.単語 === quizArray[currentQuizIndex].単語)
     ) {
-      fakeArray.splice(3, 0, quizArray[currentQuizIndex]);
+      fakeArray.splice(3, 1, quizArray[currentQuizIndex]);
+      console.log("挿入！");
+    } else {
+      const indexToSwap = fakeArray.findIndex(
+        (item) => item.単語 === quizArray[currentQuizIndex].単語
+      );
+      [fakeArray[3], fakeArray[indexToSwap]] = [
+        fakeArray[indexToSwap],
+        fakeArray[3],
+      ];
+      console.log("入れ替え！");
     }
+    console.log("fakearray:", fakeArray);
     const slicedArray = fakeArray.slice(0, 4);
+
     shuffleArray(slicedArray);
+    console.log("slicedarray:", slicedArray);
     return slicedArray;
   };
 
   const fakeArray = getFakeAnswer();
+  console.log("最終的なfakearray...", fakeArray);
 
   const handleAnswerQuiz = (array) => {
     handleSendAnswer(array);
@@ -125,7 +142,8 @@ const QuizPage = () => {
         {quizArray.map((quiz, index) => (
           <div key={index}>
             <p>
-              第{index + 1}問：{quiz.単語}、{quiz.拼音}、{quiz.品詞}
+              第{index + 1}問：{quiz.単語}、{quiz.拼音}、{quiz.品詞}、
+              {quiz.意味}
             </p>
           </div>
         ))}
