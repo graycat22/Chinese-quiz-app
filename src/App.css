@@ -115,7 +115,12 @@ button {
   overflow: hidden;
 }
 
-button:after {
+button:hover {
+  background-color: #6a1e9b;
+  transition: 0.5s;
+}
+
+.start-button::after {
   position: absolute;
   content: "";
   top: 0;
@@ -128,6 +133,9 @@ button:after {
   animation-name: button_slide;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+}
+
+.slide-bar {
 }
 
 button:hover {

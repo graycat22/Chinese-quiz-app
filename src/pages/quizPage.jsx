@@ -66,13 +66,14 @@ const QuizPage = () => {
   };
 
   return (
-    <>
+    <div className="quiz-page">
+      <div className="slide-bar"></div>
       <h2>クイズページ</h2>
 
       <>
         {showContent ? (
           isSelected ? (
-            <div className="quizWrap">
+            <div className="quiz-wrap">
               <div>
                 <p>
                   第{currentQuizIndex + 1}問！{quizArray[currentQuizIndex].単語}
@@ -91,7 +92,7 @@ const QuizPage = () => {
               </Link>
             </div>
           ) : (
-            <div>
+            <div className="quiz-answer">
               {isCorrect === true && (
                 <div>
                   <p>正解！</p>
@@ -129,7 +130,7 @@ const QuizPage = () => {
           </div>
         ))}
       </>
-    </>
+    </div>
   );
 };
 
