@@ -83,7 +83,7 @@ input[type="checkbox"]:checked {
   border-color: #8a2be2;
   transition: background-color 0.7s;
 }
-
+/*
 input[type="checkbox"]:hover {
   background-color: #8a2be2;
   transition: background-color 0.8s;
@@ -93,7 +93,7 @@ input[type="checkbox"]:checked:hover {
   background-color: lightgray;
   transition: background-color 1s;
 }
-
+*/
 /* 開始ボタンのスタイル */
 .start-button {
   padding: 12px 0; /* 上下の余白を0に設定 */
