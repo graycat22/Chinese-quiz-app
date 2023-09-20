@@ -56,6 +56,7 @@
   display: flex;
   align-items: center;
   margin: 10px 0; /* モバイルデバイスではスペースを追加 */
+  cursor: pointer;
 }
 
 .check-noun {
@@ -79,6 +80,17 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked {
   background-color: #8a2be2;
   border-color: #8a2be2;
+  transition: background-color 0.7s;
+}
+
+input[type="checkbox"]:hover {
+  background-color: #8a2be2;
+  transition: background-color 0.8s;
+}
+
+input[type="checkbox"]:checked:hover {
+  background-color: lightgray;
+  transition: background-color 1s;
 }
 
 /* 開始ボタンのスタイル */
@@ -93,17 +105,42 @@ button {
   padding: 12px 0;
   width: 40%;
   margin: 0 auto;
-  background-color: #8a2be2; /* 紫色に変更 */
+  background-color: #8a2be2;
   color: #fff;
   font-size: 18px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  overflow: hidden;
+}
+
+button:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  background: #8a2be2;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: translateX(-100%);
+  animation-name: button_slide;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 button:hover {
-  background-color: #6a1e9b; /* ホバー時の色 */
+  background-color: #6a1e9b;
+  transition: 0.5s;
+}
+
+@keyframes button_slide {
+  0% {
+    transform: translate(-100%, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }
 
 /* 数量入力フィールドのスタイル */
