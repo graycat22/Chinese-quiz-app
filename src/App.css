@@ -1,4 +1,5 @@
 #App {
+  -webkit-tap-highlight-color: transparent;
   background-color: lightgray;
 }
 
