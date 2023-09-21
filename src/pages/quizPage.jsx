@@ -66,20 +66,18 @@ const QuizPage = () => {
   };
 
   const handleSendAnswer = (meaning) => {
-    if (currentQuizIndex < quantityValue - 1) {
-      if (meaning === "next") {
-        setCurrentQuizIndex(currentQuizIndex + 1);
-        setIsSelected(!isSelected);
-        setIsCorrect(null);
-      } else if (meaning === quizArray[currentQuizIndex].意味) {
-        setIsSelected(!isSelected);
-        setIsCorrect(true);
-      } else if (meaning !== quizArray[currentQuizIndex].意味) {
-        setIsSelected(!isSelected);
-        setIsCorrect(false);
-      }
+    const isLastQuiz = currentQuizIndex === quantityValue - 1;
+
+    if (meaning === "next") {
+      isLastQuiz
+        ? setShowContent(false)
+        : setCurrentQuizIndex(currentQuizIndex + 1);
+      setIsSelected(!isSelected);
+      setIsCorrect(null);
     } else {
-      setShowContent(false);
+      const isCorrectAnswer = meaning === quizArray[currentQuizIndex].意味;
+      setIsSelected(!isSelected);
+      setIsCorrect(isCorrectAnswer);
     }
   };
 

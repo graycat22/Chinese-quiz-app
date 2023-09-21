@@ -6038,7 +6038,7 @@ const vocabulary = [
   {
     単語: "网红",
     拼音: "wǎnghóng",
-    意味: "有名なyoutuber",
+    意味: "有名なYouTuber，インフルエンサー",
     品詞: "名詞",
   },
   {
