@@ -20,6 +20,7 @@ const QuizPage = () => {
     (item) => item.品詞 === quizArray[currentQuizIndex].品詞
   );
   //問題の品詞と同じ品詞の単語を抽出して配列化
+  console.log("品詞", randomArray, initialRandomArray);
 
   const getRandomInt = (max) => {
     return Math.floor(Math.random() * max);
@@ -27,7 +28,7 @@ const QuizPage = () => {
 
   const getFakeAnswer = () => {
     const fakeArray = [];
-    for (let i = 0; i < quantityValue; i++) {
+    for (let i = 0; i < 4; i++) {
       const randomNum = getRandomInt(randomArray.length);
       const randomObj = randomArray[randomNum];
       fakeArray.push(randomObj);

@@ -9,9 +9,7 @@ import vocabulary, {
 import "../App.css";
 
 const QuizSetting = () => {
-  const [quantityValue, setQuantityValue] = useState(5);
-  const [isIncreasing, setIsIncreasing] = useState(false);
-  let timeout;
+  const [quantityValue, setQuantityValue] = useState(1);
   const [isNounSelected, setIsNounSelected] = useState(true);
   const [isVerbSelected, setIsVerbSelected] = useState(true);
   const [isAdjSelected, setIsAdjSelected] = useState(true);
@@ -25,29 +23,14 @@ const QuizSetting = () => {
 
   const handleQuantityChange = (e) => {
     const settedValue = parseInt(e.target.value, 10);
-    if (isNaN(settedValue)) {
-      alert("数字を入力してください");
+    if (isNaN(settedValue) || settedValue < 1) {
+      alert("自然数を入力してください");
     } else if (settedValue > vocabulary.length) {
       alert("問題数が多すぎます");
       setQuantityValue(vocabulary.length);
     } else {
       setQuantityValue(settedValue);
     }
-  };
-
-  const handleMouseDown = () => {
-    setIsIncreasing(true);
-
-    timeout = setInterval(() => {
-      handleQuantityChange({ target: { value: quantityValue + 1 } });
-    }, 200);
-
-    handleQuantityChange({ target: { value: quantityValue + 1 } });
-  };
-
-  const handleMouseUp = () => {
-    setIsIncreasing(false);
-    clearInterval(timeout);
   };
 
   const handleCheckboxChange = (setStateFunction, prevValue) => {
@@ -126,8 +109,9 @@ const QuizSetting = () => {
           </span>
           <span
             className="spinner spinner-up"
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
+            onClick={() =>
+              handleQuantityChange({ target: { value: quantityValue + 1 } })
+            }
           >
             +
           </span>
