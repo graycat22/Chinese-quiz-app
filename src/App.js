@@ -4,6 +4,7 @@ import QuizSetting from "./pages/quizSetting";
 import QuizPage from "./pages/quizPage";
 import VocaBook from "./pages/vocaBook";
 import NotFound from "./pages/Error";
+import NavBar from "./components/navBar";
 import "./App.css";
 import About from "./pages/About";
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/quizPage" element={<QuizPage />} />
         <Route path="/vocaBook" element={<VocaBook />} />
         <Route path="/about" element={<About />} />
+        <Route path="/navbar" element={<NavBar />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

@@ -6,7 +6,7 @@ import vocabulary, {
   adjective,
   adverbs,
 } from "../library/wordBank";
-import "../App.css";
+import { NavBar } from "../components/navBar";
 
 const QuizSetting = () => {
   const [quantityValue, setQuantityValue] = useState(1);
@@ -15,11 +15,6 @@ const QuizSetting = () => {
   const [isAdjSelected, setIsAdjSelected] = useState(true);
   const [isAdvSelected, setIsAdvSelected] = useState(true);
   const navigate = useNavigate();
-
-  console.log(isNounSelected);
-  console.log(isVerbSelected);
-  console.log(isAdjSelected);
-  console.log(isAdvSelected);
 
   const handleQuantityChange = (e) => {
     const settedValue = parseInt(e.target.value, 10);
@@ -83,7 +78,7 @@ const QuizSetting = () => {
   };
 
   return (
-    <>
+    <div id="quiz-setting">
       <h2>クイズを出題するよ</h2>
       <p>問題数設定</p>
       <div>
@@ -180,7 +175,7 @@ const QuizSetting = () => {
       >
         <p>戻る</p>
       </Link>
-    </>
+    </div>
   );
 };
 

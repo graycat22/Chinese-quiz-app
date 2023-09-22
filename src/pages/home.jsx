@@ -26,8 +26,8 @@ const Home = () => {
               </Link>
             </li>
             <li>
-              <Link to="/memo">
-                <span>MEMO</span>
+              <Link to="/navbar">
+                <span>DUMMY</span>
               </Link>
             </li>
             <li>
@@ -64,7 +64,7 @@ const Home = () => {
           </div>
           <span>
             <a
-              href="http://www.youtube.com"
+              href="http://www.youtube.com/@comdot"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -82,7 +82,7 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              YouTube
+              Facebook
             </a>
           </span>
         </div>

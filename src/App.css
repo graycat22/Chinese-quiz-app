@@ -1,6 +1,7 @@
 html {
   font-size: 100%; /* 16px */
   height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -8,7 +9,6 @@ body {
   height: 100%;
   width: 100%;
   color: #24292e;
-  overflow: hidden;
 }
 
 a {
@@ -42,6 +42,7 @@ img {
     max-width: 960px;
     text-align: center;
     padding: 30px 0;
+    color: rgb(80, 80, 80);
     background-color: rgba(253, 236, 224, 255);
   }
 
@@ -122,21 +123,9 @@ img {
   }
 
   .footer .button:hover {
-    width: 220px;
-  }
-  /*
-  .footer .button:nth-child(1):hover .icon {
-    background-color: #ffffffd2;
+    width: 240px;
   }
 
-  .footer .button:nth-child(2):hover .icon {
-    background-color: #ffffffd2;
-  }
-
-  .footer .button:nth-child(3):hover .icon {
-    background-color: #ffffffd2;
-  }
-*/
   .footer .button .icon {
     display: inline-block;
     height: 60px;
@@ -181,6 +170,165 @@ img {
     font-weight: bold;
   }
 
+  /* 
+  //////
+  ここからナビページ/////////////////////////////////////
+  //////
+  */
+
+  .navi-relative {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .navi-absolute {
+    position: absolute;
+    top: 22%;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar .button {
+    flex-wrap: wrap;
+    height: 60px;
+    width: 90px;
+    margin: 10px 20px;
+    cursor: pointer;
+    color: #ffffffd2;
+    background-color: #f09d9d69;
+    border-radius: 50px;
+    box-shadow: 0 5px 10px rgb(172, 172, 172);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
+
+  .navbar .button:hover {
+    width: 250px;
+  }
+
+  .navbar .button .icon {
+    display: inline-block;
+    height: 60px;
+    width: 90px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 50px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 60px;
+    transition: all 0.4s;
+  }
+
+  .navbar .button:hover .icon {
+    color: #24292e;
+    transition: all 0.4s;
+  }
+
+  .navbar .button:nth-child(2) .icon i {
+    padding: 1px 0 0 1px;
+  }
+
+  .navbar .button span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin: auto;
+    padding-right: 30px;
+  }
+
+  .navbar .button span a {
+    color: #24292e;
+  }
+
+  .start-button,
+  .back-button {
+    width: 150px;
+    height: 60px;
+    background-color: #a12222;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex; /* Flexbox を使用して中央揃え */
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    transition: 0.9s;
+  }
+
+  .start-button button,
+  .back-button a {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .start-button {
+    margin: 20%;
+  }
+
+  .back-button {
+    margin: 5% 10%;
+  }
+
+  .start-button:hover,
+  back-button:hover {
+    background-color: #831221;
+    transition: 0.9s;
+  }
+
+  /*
+  .start-button::after,
+  .slide-button::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background: #8a2be2;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: translateX(-100%);
+    animation-name: button_slide;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+*/
+  .slide-bar {
+  }
+
+  @keyframes button_slide {
+    0% {
+      transform: translate(-100%, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  /* 
+  //////
+  ここからクイズ作成ページ/////////////////////////////////////
+  //////
+  */
+  /*
+  #quiz-setting {
+    height: 100%;
+    background-color: #c28d8dbd;
+  }
+
   .number-spinner-wrap input::-webkit-outer-spin-button,
   .number-spinner-wrap input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -194,11 +342,10 @@ img {
   .spinner {
   }
 
-  /* スピンボタンのスタイル */
   .number-spinner-wrap {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* モバイルデバイスではスペースを追加 */
+    margin-bottom: 20px;
   }
 
   .spinner {
@@ -226,11 +373,10 @@ img {
   .check-label-wrap div {
   }
 
-  /* チェックボックスのスタイル */
   .check-label {
     display: flex;
     align-items: center;
-    margin: 10px 0; /* モバイルデバイスではスペースを追加 */
+    margin: 10px 0;
     cursor: pointer;
   }
 
@@ -265,72 +411,6 @@ img {
     margin: 0 auto;
   }
 
-  /*
-input[type="checkbox"]:hover {
-  background-color: #8a2be2;
-  transition: background-color 0.8s;
-}
-
-input[type="checkbox"]:checked:hover {
-  background-color: lightgray;
-  transition: background-color 1s;
-}
-*/
-  /* 開始ボタンのスタイル */
-  .start-button {
-    padding: 12px 0; /* 上下の余白を0に設定 */
-    width: 100%; /* 幅を50%に設定 */
-    text-align: center; /* 左右中央に配置 */
-  }
-
-  /* ボタンのスタイル */
-  button {
-    padding: 12px 0;
-    width: 40%;
-    margin: 0 auto;
-    background-color: #8a2be2;
-    color: #fff;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    overflow: hidden;
-  }
-
-  button:hover {
-    background-color: #6a1e9b;
-    transition: 0.5s;
-  }
-
-  .start-button::after,
-  .slide-button::after {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    background: #8a2be2;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    transform: translateX(-100%);
-    animation-name: button_slide;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-  }
-
-  .slide-bar {
-  }
-
-  @keyframes button_slide {
-    0% {
-      transform: translate(-100%, 0);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
-  }
-
-  /* 数量入力フィールドのスタイル */
   input[type="number"] {
     width: 60px;
     padding: 10px;
@@ -338,6 +418,7 @@ input[type="checkbox"]:checked:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     text-align: center;
-    margin-right: 10px; /* モバイルデバイスで右側のスペースを追加 */
+    margin-right: 10px; 
   }
+*/
 }
