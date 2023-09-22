@@ -14,6 +14,7 @@ const QuizPage = () => {
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
   const [isSelected, setIsSelected] = useState(true);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [mistakes, setMistakes] = useState([]);
 
   // randomArrayはSettingのquizArrayと同じ。つまりユーザが選んだ品詞の全単語が入ってる。
   const randomArray = initialRandomArray.filter(
@@ -26,6 +27,7 @@ const QuizPage = () => {
     return Math.floor(Math.random() * max);
   };
 
+  //偽回答を生成
   const getFakeAnswer = () => {
     const fakeArray = [];
     for (let i = 0; i < 4; i++) {
@@ -61,23 +63,33 @@ const QuizPage = () => {
   const fakeArray = getFakeAnswer();
   console.log("最終的なfakearray...", fakeArray);
 
-  const handleAnswerQuiz = (array) => {
-    handleSendAnswer(array);
-  };
-
-  const handleSendAnswer = (meaning) => {
+  //答えを受信
+  const handleSendAnswer = (meaning, yourAnserIndex) => {
     const isLastQuiz = currentQuizIndex === quantityValue - 1;
+    const newMistakes = [...mistakes];
 
     if (meaning === "next") {
-      isLastQuiz
-        ? setShowContent(false)
-        : setCurrentQuizIndex(currentQuizIndex + 1);
-      setIsSelected(!isSelected);
-      setIsCorrect(null);
+      if (isLastQuiz) {
+        setShowContent(false);
+      } else {
+        setCurrentQuizIndex(currentQuizIndex + 1);
+        setIsSelected(!isSelected);
+        setIsCorrect(null);
+      }
     } else {
-      const isCorrectAnswer = meaning === quizArray[currentQuizIndex].意味;
+      const isCorrectAnswer = meaning.意味 === quizArray[currentQuizIndex].意味;
       setIsSelected(!isSelected);
       setIsCorrect(isCorrectAnswer);
+      if (!isCorrectAnswer) {
+        newMistakes.push({
+          currentQuizIndex,
+          correctAnswer: quizArray[currentQuizIndex],
+          fakeAnswer: fakeArray.slice(0, 4),
+          yourAnser: meaning,
+        });
+        setMistakes(newMistakes);
+        console.log("ミステーク", newMistakes);
+      }
     }
   };
 
@@ -97,7 +109,7 @@ const QuizPage = () => {
                 {fakeArray.slice(0, 4).map((fakeItem, index) => (
                   <button
                     key={index}
-                    onClick={() => handleAnswerQuiz(fakeItem.意味)}
+                    onClick={() => handleSendAnswer(fakeItem, index)}
                   >
                     {fakeItem.意味}
                   </button>
@@ -126,9 +138,13 @@ const QuizPage = () => {
         ) : (
           <div>
             <p>お疲れ様でした</p>
+            <p>間違えた問題数は{mistakes.length}問です</p>
             <Link to="/">
               <button>終了</button>
             </Link>
+            <sapn>
+              <button>間違えた問題を見る</button>
+            </sapn>
             <Link to="/">
               <button>Back</button>
             </Link>

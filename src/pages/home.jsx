@@ -1,43 +1,69 @@
 import { NavLink } from "react-router-dom";
-import { useMedia } from "react-use";
 
 const Home = () => {
-  const isIphone12 = useMedia("(max-width: 768px)");
   return (
     <>
-      {isIphone12 ? (
-        <>
-          <h1>クイズアプリ</h1>
-          <ul>
-            <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? "active" : undefined)}
-                to="/"
-              >
-                ホーム
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? "active" : undefined)}
-                to="/quizSetting"
-              >
-                クイズページ
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) => (isActive ? "active" : undefined)}
-                to="/vocaBook"
-              >
-                単語帳
-              </NavLink>
-            </li>
-          </ul>
-        </>
-      ) : (
-        <p>パソコン非対応です</p>
-      )}
+      <header id="header">
+        <h2>等到有一天我会说中文</h2>
+      </header>
+      <div id="top">
+        <ul>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+              to="/quizSetting"
+            >
+              <span>QUIZ</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+              to="/vocaBook"
+            >
+              <span>VOCABULARY</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+              to="/vocaBook"
+            >
+              <span>VOCABULARY</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+              to="/vocaBook"
+            >
+              <span>VOCABULARY</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+              to="/vocaBook"
+            >
+              <span>VOCABULARY</span>
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+      <hooter>
+        <div className="button">
+          <div className="icon">
+            <i className="fab fa-twitter"></i>
+          </div>
+          <span>X</span>
+        </div>
+        <div className="button">
+          <div className="icon">
+            <i className="fab fa-youtube"></i>
+          </div>
+          <span>YouTube</span>
+        </div>
+      </hooter>
     </>
   );
 };

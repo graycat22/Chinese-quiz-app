@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import vocabulary, {
   noun,
   verb,
@@ -174,6 +174,12 @@ const QuizSetting = () => {
       <div className="start-button">
         <button onClick={handleStartQuiz}>開始</button>
       </div>
+      <Link
+        to="/"
+        style={{ float: "right", color: "lightgray", textDecoration: "none" }}
+      >
+        <p>戻る</p>
+      </Link>
     </>
   );
 };
