@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/quiz-app/static/css/main.af59fa93.css",
-    "main.js": "/quiz-app/static/js/main.a30a2448.js",
+    "main.css": "/quiz-app/static/css/main.e93afc48.css",
+    "main.js": "/quiz-app/static/js/main.11ee77ae.js",
     "static/js/787.9e90ff23.chunk.js": "/quiz-app/static/js/787.9e90ff23.chunk.js",
-    "static/media/ChineseOldBuilding-pc.jpg": "/quiz-app/static/media/ChineseOldBuilding-pc.774ae93311da188b0f91.jpg",
+    "static/media/ChineseOldBuilding-pc.jpg": "/quiz-app/static/media/ChineseOldBuilding-pc.5f16a9f5beb859e40092.jpg",
     "index.html": "/quiz-app/index.html",
-    "main.af59fa93.css.map": "/quiz-app/static/css/main.af59fa93.css.map",
-    "main.a30a2448.js.map": "/quiz-app/static/js/main.a30a2448.js.map",
+    "main.e93afc48.css.map": "/quiz-app/static/css/main.e93afc48.css.map",
+    "main.11ee77ae.js.map": "/quiz-app/static/js/main.11ee77ae.js.map",
     "787.9e90ff23.chunk.js.map": "/quiz-app/static/js/787.9e90ff23.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.af59fa93.css",
-    "static/js/main.a30a2448.js"
+    "static/css/main.e93afc48.css",
+    "static/js/main.11ee77ae.js"
   ]
 }
