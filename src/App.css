@@ -13,190 +13,233 @@ a {
   text-decoration: none;
 }
 
-p {
-  font-size: 1.3rem;
+li {
+  list-style: none;
 }
 
 img {
-  max-width: 100%;
-}
-
-li {
-  list-style: none;
-  font-size: 1.2rem;
+  pointer-events: none;
 }
 
 #App {
   -webkit-tap-highlight-color: transparent;
 }
 
-#header {
-  max-width: 960px;
-  text-align: center;
-  margin: 30px 0;
-}
+@media screen and (max-width: 768px) {
+  #home {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
 
-#main ul li {
-  padding: 15px 20px 0;
-}
+  #home #header {
+    max-width: 960px;
+    text-align: center;
+    padding: 30px 0;
+    background-color: rgba(253, 236, 224, 255);
+  }
 
-#main img {
-  width: 100%;
-  height: 650px;
-  object-fit: cover;
-}
+  #main {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
 
-hooter {
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding-bottom: 10px;
-}
+  #main img {
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+  }
 
-hooter .button {
-  display: flex;
-  flex-wrap: wrap;
-  height: 60px;
-  width: 60px;
-  float: left;
-  margin: 0 10px;
-  cursor: pointer;
-  border-radius: 50px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-}
+  .menu-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-hooter .button:hover {
-  width: 200px;
-}
+  #main ul li {
+    padding: 15px 15px 3px 20px;
+    position: relative;
+  }
 
-hooter .button:nth-child(1):hover .icon {
-  background-color: #9dceec;
-}
+  #main ul li::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100%; /* 初期状態で左に隠す */
+    width: 100%;
+    height: 2px;
+    background-color: #a53342;
+    transition: left 0.4s ease-in-out; /* アニメーション設定 */
+  }
 
-hooter .button:nth-child(2):hover .icon {
-  background-color: #d99ae6;
-}
+  #main ul li:hover::before {
+    left: 0; /* ホバー時に左から右へ表示 */
+  }
 
-hooter .button .icon {
-  display: inline-block;
-  height: 60px;
-  width: 60px;
-  border-radius: 50px;
-  box-sizing: border-box;
-  text-align: center;
-  line-height: 60px;
-  transition: all 0.3s;
-}
+  #main ul li a span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    color: rgb(80, 80, 80);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap; /*空白でも改行されない*/
+  }
 
-hooter .button .icon i {
-  font-size: 25px;
-  line-height: 60px;
-}
+  hooter {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 10px;
+  }
 
-hooter .button span {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 60px;
-  margin: auto;
-  padding-right: 30px;
-}
+  hooter .button {
+    display: flex;
+    flex-wrap: wrap;
+    height: 60px;
+    width: 60px;
+    float: left;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+  }
 
-.fa-twitter:before {
-  content: "𝕏";
-  font-family: unset;
-  font-weight: bold;
-}
+  hooter .button:hover {
+    width: 200px;
+  }
 
-.number-spinner-wrap input::-webkit-outer-spin-button,
-.number-spinner-wrap input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+  hooter .button:nth-child(1):hover .icon {
+    background-color: #9dceec;
+  }
 
-.number-spinner-input {
-  margin: 0;
-}
+  hooter .button:nth-child(2):hover .icon {
+    background-color: #d99ae6;
+  }
 
-.spinner {
-}
+  hooter .button .icon {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 60px;
+    transition: all 0.3s;
+  }
 
-/* スピンボタンのスタイル */
-.number-spinner-wrap {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px; /* モバイルデバイスではスペースを追加 */
-}
+  hooter .button .icon i {
+    font-size: 25px;
+    line-height: 60px;
+  }
 
-.spinner {
-  width: 40px;
-  height: 40px;
-  background-color: #8a2be2;
-  color: #fff;
-  font-size: 24px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  margin: 0 10px;
-  transition: background-color 0.2s;
-}
+  hooter .button span {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 60px;
+    margin: auto;
+    padding-right: 30px;
+  }
 
-.spinner:hover {
-  background-color: #6a1e9b;
-}
+  .fa-twitter:before {
+    content: "𝕏";
+    font-family: unset;
+    font-weight: bold;
+  }
 
-.check-label-wrap {
-  display: flex;
-  justify-content: space-around;
-}
+  .number-spinner-wrap input::-webkit-outer-spin-button,
+  .number-spinner-wrap input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-.check-label-wrap div {
-}
+  .number-spinner-input {
+    margin: 0;
+  }
 
-/* チェックボックスのスタイル */
-.check-label {
-  display: flex;
-  align-items: center;
-  margin: 10px 0; /* モバイルデバイスではスペースを追加 */
-  cursor: pointer;
-}
+  .spinner {
+  }
 
-.check-noun {
-}
+  /* スピンボタンのスタイル */
+  .number-spinner-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* モバイルデバイスではスペースを追加 */
+  }
 
-.check-verb,
-.check-adj {
-  margin-top: 50px;
-}
+  .spinner {
+    width: 40px;
+    height: 40px;
+    background-color: #8a2be2;
+    color: #fff;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.2s;
+  }
 
-input[type="checkbox"] {
-  margin-right: 10px;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  border: 2px solid #8a2be2;
-  border-radius: 4px;
-  cursor: pointer;
-}
+  .spinner:hover {
+    background-color: #6a1e9b;
+  }
 
-input[type="checkbox"]:checked {
-  background-color: #8a2be2;
-  border-color: #8a2be2;
-  transition: background-color 0.7s;
-}
+  .check-label-wrap {
+    display: flex;
+    justify-content: space-around;
+  }
 
-input[type="number"] {
-  outline: none;
-  outline: solid 3px rgb(188, 156, 214);
-  box-shadow: 0px 0px 10px 0px #8366ec;
-  margin: 0 auto;
-}
+  .check-label-wrap div {
+  }
 
-/*
+  /* チェックボックスのスタイル */
+  .check-label {
+    display: flex;
+    align-items: center;
+    margin: 10px 0; /* モバイルデバイスではスペースを追加 */
+    cursor: pointer;
+  }
+
+  .check-noun {
+  }
+
+  .check-verb,
+  .check-adj {
+    margin-top: 50px;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 10px;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #8a2be2;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type="checkbox"]:checked {
+    background-color: #8a2be2;
+    border-color: #8a2be2;
+    transition: background-color 0.7s;
+  }
+
+  input[type="number"] {
+    outline: none;
+    outline: solid 3px rgb(188, 156, 214);
+    box-shadow: 0px 0px 10px 0px #8366ec;
+    margin: 0 auto;
+  }
+
+  /*
 input[type="checkbox"]:hover {
   background-color: #8a2be2;
   transition: background-color 0.8s;
@@ -207,67 +250,68 @@ input[type="checkbox"]:checked:hover {
   transition: background-color 1s;
 }
 */
-/* 開始ボタンのスタイル */
-.start-button {
-  padding: 12px 0; /* 上下の余白を0に設定 */
-  width: 100%; /* 幅を50%に設定 */
-  text-align: center; /* 左右中央に配置 */
-}
-
-/* ボタンのスタイル */
-button {
-  padding: 12px 0;
-  width: 40%;
-  margin: 0 auto;
-  background-color: #8a2be2;
-  color: #fff;
-  font-size: 18px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-button:hover {
-  background-color: #6a1e9b;
-  transition: 0.5s;
-}
-
-.start-button::after,
-.slide-button::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  background: #8a2be2;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  transform: translateX(-100%);
-  animation-name: button_slide;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-}
-
-.slide-bar {
-}
-
-@keyframes button_slide {
-  0% {
-    transform: translate(-100%, 0);
+  /* 開始ボタンのスタイル */
+  .start-button {
+    padding: 12px 0; /* 上下の余白を0に設定 */
+    width: 100%; /* 幅を50%に設定 */
+    text-align: center; /* 左右中央に配置 */
   }
-  100% {
-    transform: translate(0, 0);
-  }
-}
 
-/* 数量入力フィールドのスタイル */
-input[type="number"] {
-  width: 60px;
-  padding: 10px;
-  font-size: 18px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
-  margin-right: 10px; /* モバイルデバイスで右側のスペースを追加 */
+  /* ボタンのスタイル */
+  button {
+    padding: 12px 0;
+    width: 40%;
+    margin: 0 auto;
+    background-color: #8a2be2;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  button:hover {
+    background-color: #6a1e9b;
+    transition: 0.5s;
+  }
+
+  .start-button::after,
+  .slide-button::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background: #8a2be2;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: translateX(-100%);
+    animation-name: button_slide;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  .slide-bar {
+  }
+
+  @keyframes button_slide {
+    0% {
+      transform: translate(-100%, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  /* 数量入力フィールドのスタイル */
+  input[type="number"] {
+    width: 60px;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 10px; /* モバイルデバイスで右側のスペースを追加 */
+  }
 }

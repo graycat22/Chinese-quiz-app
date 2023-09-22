@@ -4,73 +4,76 @@ import ChineseOldBuildingSp from "../images/ChineseOldBuilding-pc.jpg";
 
 const Home = () => {
   return (
-    <>
+    <div id="home">
       <header id="header">
         <h2>等到有一天我会说中文</h2>
       </header>
-      <div id="main">
+      <main id="main">
         <picture>
-          <source media="(max-width: 600px)" srcSet={ChineseOldBuildingSp} />
+          <source media="(max-width: 768px)" srcSet={ChineseOldBuildingSp} />
           <img src={ChineseOldBuildingPc} alt="Chinese Building" />
         </picture>
-        <ul>
-          <li>
-            <Link
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-              to="/quizSetting"
-            >
-              <span>QUIZ</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-              to="/vocaBook"
-            >
-              <span>VOCABULARY</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-              to="/vocaBook"
-            >
-              <span>VOCABULARY</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-              to="/vocaBook"
-            >
-              <span>VOCABULARY</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-              to="/vocaBook"
-            >
-              <span>VOCABULARY</span>
-            </Link>
-          </li>
-        </ul>
-      </div>
+        <nav class="menu-nav">
+          <ul>
+            <li>
+              <Link to="/quizSetting">
+                <span>QUIZ&emsp;&emsp;&emsp;&emsp;</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/vocaBook">
+                <span>VOCABULARY</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/vocaBook">
+                <span>VOCABULARY</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/vocaBook">
+                <span>VOCABULARY</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/vocaBook">
+                <span>VOCABULARY</span>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </main>
       <hooter>
         <div className="button">
           <div className="icon">
             <i className="fab fa-twitter"></i>
           </div>
-          <span>X</span>
+          <span>
+            <a
+              href="http://www.x.com/elonmusk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              X
+            </a>
+          </span>
         </div>
         <div className="button">
           <div className="icon">
             <i className="fab fa-youtube"></i>
           </div>
-          <span>YouTube</span>
+          <span>
+            <a
+              href="http://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              YouTube
+            </a>
+          </span>
         </div>
       </hooter>
-    </>
+    </div>
   );
 };
 
