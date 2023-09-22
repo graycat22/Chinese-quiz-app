@@ -6,176 +6,119 @@ import vocabulary, {
   adjective,
   adverbs,
 } from "../library/wordBank";
-import { NavBar } from "../components/navBar";
 
 const QuizSetting = () => {
-  const [quantityValue, setQuantityValue] = useState(1);
-  const [isNounSelected, setIsNounSelected] = useState(true);
-  const [isVerbSelected, setIsVerbSelected] = useState(true);
-  const [isAdjSelected, setIsAdjSelected] = useState(true);
-  const [isAdvSelected, setIsAdvSelected] = useState(true);
+  const [quantity, setQuantity] = useState(1);
+  const [isN, setIsN] = useState(false);
+  const [isAdj, setIsAdj] = useState(false);
+  const [isAdv, setIsAdv] = useState(false);
+  const [isV, setIsV] = useState(false);
   const navigate = useNavigate();
 
-  const handleQuantityChange = (e) => {
-    const settedValue = parseInt(e.target.value, 10);
+  const NTbutton = isN ? "button selected" : "button";
+  const AdjTbutton = isAdj ? "button selected" : "button";
+  const AdvTbutton = isAdv ? "button selected" : "button";
+  const VTbutton = isV ? "button selected" : "button";
+
+  const handleQuantity = (event) => {
+    const settedValue = parseInt(event.target.value, 10);
     if (isNaN(settedValue) || settedValue < 1) {
-      alert("自然数を入力してください");
+      alert("だめです");
     } else if (settedValue > vocabulary.length) {
-      alert("問題数が多すぎます");
-      setQuantityValue(vocabulary.length);
+      alert("問題数多すぎまる");
+      setQuantity(vocabulary.length);
     } else {
-      setQuantityValue(settedValue);
+      setQuantity(settedValue);
     }
   };
 
-  const handleCheckboxChange = (setStateFunction, prevValue) => {
-    setStateFunction((prevValue) => !prevValue);
-  };
-
-  const handleStartQuiz = (noun_, verb_, adjective_, adverbs_) => {
+  const startQuiz = () => {
     const quizArray = [];
 
-    if (isNounSelected) {
-      const noun$ = [...noun];
-      shuffleArray(noun$);
-      const halfNoun = noun$.slice(0, noun.length / 3.2);
+    if (isN) {
+      const noun_ = [...noun];
+      shuffleArray(noun_);
+      const halfNoun = noun_.slice(0, noun.length / 3.2);
       quizArray.push(...halfNoun);
-      console.log(halfNoun.length);
     }
 
-    if (isVerbSelected) {
+    if (isV) {
       quizArray.push(...verb);
     }
-
-    if (isAdjSelected) {
+    if (isAdj) {
       quizArray.push(...adjective);
     }
 
-    if (isAdvSelected) {
+    if (isAdv) {
       quizArray.push(...adverbs);
     }
 
-    if (
-      !isNounSelected &&
-      !isVerbSelected &&
-      !isAdjSelected &&
-      !isAdvSelected
-    ) {
-      if ("vibrate" in navigator) {
-        navigator.vibrate([500]);
-      }
-      alert("少なくとも1つのオプションを選択してください");
+    if (!isN && !isV && !isAdj && !isAdv) {
+      alert("少なくとも1つは選択してください");
       return;
     } else {
       const randomArray = [...quizArray];
       shuffleArray(randomArray);
-      console.log("Settingのランダム配列：", randomArray);
-      const shuffledArray = getRandomArray(quizArray, quantityValue);
+      const shuffledArray = getRandomArray(quizArray, quantity);
       navigate("/quizPage", {
-        state: { quantityValue, quizArray: shuffledArray, randomArray },
+        state: { quantity, quizArray: shuffledArray, randomArray },
       });
     }
   };
 
   return (
-    <div id="quiz-setting">
-      <h2>クイズを出題するよ</h2>
-      <p>問題数設定</p>
-      <div>
-        <label className="number-spinner-wrap" htmlFor="quantity">
+    <>
+      <div className="navi-relative">
+        <p>Select the quantity</p>
+        <div className="quiz-quantity">
+          <span
+            onClick={() => handleQuantity({ target: { value: quantity - 1 } })}
+          >
+            －
+          </span>
           <input
-            className="number-spinner-input"
-            type="number"
-            id="quantity"
             name="quantity"
+            pattern="^[1-9][0-9]*$"
+            inputMode="numeric"
+            value={quantity}
             min="1"
-            max="1014"
-            step="1"
-            value={quantityValue}
-            onChange={handleQuantityChange}
+            max={vocabulary.length}
+            onChange={handleQuantity}
           />
           <span
-            className="spinner spinner-down"
-            onClick={() =>
-              handleQuantityChange({ target: { value: quantityValue - 1 } })
-            }
+            onClick={() => handleQuantity({ target: { value: quantity + 1 } })}
           >
-            -
+            ＋
           </span>
-          <span
-            className="spinner spinner-up"
-            onClick={() =>
-              handleQuantityChange({ target: { value: quantityValue + 1 } })
-            }
-          >
-            +
-          </span>
-        </label>
-      </div>
-      <div className="check-label-wrap">
-        <div>
-          <label className="check-label check-noun">
-            <input
-              type="checkbox"
-              id="noun"
-              checked={isNounSelected}
-              onChange={() =>
-                handleCheckboxChange(setIsNounSelected, isNounSelected)
-              }
-            />
-            名詞
-          </label>
         </div>
-        <div>
-          <label className="check-label check-verb">
-            <input
-              type="checkbox"
-              id="verb"
-              checked={isVerbSelected}
-              onChange={() =>
-                handleCheckboxChange(setIsVerbSelected, isVerbSelected)
-              }
-            />
-            動詞
-          </label>
-        </div>
-        <div>
-          <label className="check-label check-adj">
-            <input
-              type="checkbox"
-              id="adjective"
-              checked={isAdjSelected}
-              onChange={() =>
-                handleCheckboxChange(setIsAdjSelected, isAdjSelected)
-              }
-            />
-            形容詞
-          </label>
-        </div>
-        <div>
-          <label className="check-label check-adv">
-            <input
-              type="checkbox"
-              id="adverbs"
-              checked={isAdvSelected}
-              onChange={() =>
-                handleCheckboxChange(setIsAdvSelected, isAdvSelected)
-              }
-            />
-            副詞
-          </label>
+        <div className="navi-absolute">
+          <div className="navbar">
+            <div className={NTbutton} onClick={() => setIsN(!isN)}>
+              <div className="icon">名詞</div>
+              <span>出題するよ</span>
+            </div>
+            <div className={AdjTbutton} onClick={() => setIsAdj(!isAdj)}>
+              <div className="icon">形容詞</div>
+              <span>出題するよ</span>
+            </div>
+            <div className={AdvTbutton} onClick={() => setIsAdv(!isAdv)}>
+              <div className="icon">副詞</div>
+              <span>出題するよ</span>
+            </div>
+            <div className={VTbutton} onClick={() => setIsV(!isV)}>
+              <div className="icon">動詞</div>
+              <span>出題するよ</span>
+            </div>
+          </div>
+          <div className="start-button" onClick={startQuiz}>
+            <button>開始</button>
+          </div>
+          <div className="back-button">
+            <Link to="/">戻る</Link>
+          </div>
         </div>
       </div>
-      <div className="start-button">
-        <button onClick={handleStartQuiz}>開始</button>
-      </div>
-      <Link
-        to="/"
-        style={{ float: "right", color: "lightgray", textDecoration: "none" }}
-      >
-        <p>戻る</p>
-      </Link>
-    </div>
+    </>
   );
 };
 
@@ -193,4 +136,5 @@ export const shuffleArray = (array) => {
     [array[i], array[j]] = [array[j], array[i]];
   }
 };
+
 export default QuizSetting;

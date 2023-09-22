@@ -5,7 +5,7 @@ import { shuffleArray } from "./quizSetting";
 const QuizPage = () => {
   const { state } = useLocation();
   const {
-    quantityValue,
+    quantity,
     quizArray: initialQuizArray,
     randomArray: initialRandomArray,
   } = state;
@@ -65,7 +65,7 @@ const QuizPage = () => {
 
   //答えを受信
   const handleSendAnswer = (meaning, yourAnserIndex) => {
-    const isLastQuiz = currentQuizIndex === quantityValue - 1;
+    const isLastQuiz = currentQuizIndex === quantity - 1;
     const newMistakes = [...mistakes];
 
     if (meaning === "next") {
@@ -153,7 +153,7 @@ const QuizPage = () => {
       </>
 
       <>
-        <p>問題数: {quantityValue}</p>
+        <p>問題数: {quantity}</p>
         {quizArray.map((quiz, index) => (
           <div key={index}>
             <p>

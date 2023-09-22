@@ -181,6 +181,46 @@ img {
     overflow: hidden;
   }
 
+  .quiz-quantity {
+    position: absolute;
+    width: max-content;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quiz-quantity input {
+    width: 110px;
+    height: 60px;
+    text-align: center;
+    font-size: 20px;
+    color: #831221;
+    border: 2px solid#831221;
+    border-radius: 3rem;
+  }
+
+  .quiz-quantity span {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    cursor: pointer;
+    text-align: center;
+    line-height: 3.5rem;
+    font-size: 28px;
+    color: #fff;
+    background: #a53342;
+    border-radius: 50px;
+  }
+
+  .quiz-quantity span:nth-child(1) {
+    margin-right: 40px;
+  }
+
+  .quiz-quantity span:nth-child(3) {
+    margin-left: 40px;
+  }
+
   .navi-absolute {
     position: absolute;
     top: 22%;
@@ -205,7 +245,7 @@ img {
     width: 90px;
     margin: 10px 20px;
     cursor: pointer;
-    color: #ffffffd2;
+    color: #8d8d8dd2;
     background-color: #f09d9d69;
     border-radius: 50px;
     box-shadow: 0 5px 10px rgb(172, 172, 172);
@@ -213,8 +253,12 @@ img {
     overflow: hidden;
   }
 
-  .navbar .button:hover {
+  .button.selected {
     width: 250px;
+  }
+
+  .button.selected .icon {
+    color: #a12222;
   }
 
   .navbar .button .icon {
@@ -232,7 +276,7 @@ img {
 
   .navbar .button:hover .icon {
     color: #24292e;
-    transition: all 0.4s;
+    transition: all 0.7s;
   }
 
   .navbar .button:nth-child(2) .icon i {
