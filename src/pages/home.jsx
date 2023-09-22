@@ -1,4 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ChineseOldBuildingPc from "../images/ChineseOldBuilding-pc.jpg";
+import ChineseOldBuildingSp from "../images/ChineseOldBuilding-pc.jpg";
 
 const Home = () => {
   return (
@@ -6,47 +8,51 @@ const Home = () => {
       <header id="header">
         <h2>等到有一天我会说中文</h2>
       </header>
-      <div id="top">
+      <div id="main">
+        <picture>
+          <source media="(max-width: 600px)" srcSet={ChineseOldBuildingSp} />
+          <img src={ChineseOldBuildingPc} alt="Chinese Building" />
+        </picture>
         <ul>
           <li>
-            <NavLink
+            <Link
               className={({ isActive }) => (isActive ? "active" : undefined)}
               to="/quizSetting"
             >
               <span>QUIZ</span>
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               className={({ isActive }) => (isActive ? "active" : undefined)}
               to="/vocaBook"
             >
               <span>VOCABULARY</span>
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               className={({ isActive }) => (isActive ? "active" : undefined)}
               to="/vocaBook"
             >
               <span>VOCABULARY</span>
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               className={({ isActive }) => (isActive ? "active" : undefined)}
               to="/vocaBook"
             >
               <span>VOCABULARY</span>
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               className={({ isActive }) => (isActive ? "active" : undefined)}
               to="/vocaBook"
             >
               <span>VOCABULARY</span>
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </div>
