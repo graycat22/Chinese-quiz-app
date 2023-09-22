@@ -26,24 +26,24 @@ const Home = () => {
               </Link>
             </li>
             <li>
-              <Link to="/vocaBook">
-                <span>VOCABULARY</span>
+              <Link to="/memo">
+                <span>MEMO</span>
               </Link>
             </li>
             <li>
-              <Link to="/vocaBook">
-                <span>VOCABULARY</span>
+              <Link to="/about">
+                <span>ABOUT</span>
               </Link>
             </li>
             <li>
-              <Link to="/vocaBook">
-                <span>VOCABULARY</span>
+              <Link to="/error">
+                <span>ComingSoon...</span>
               </Link>
             </li>
           </ul>
         </nav>
       </main>
-      <hooter>
+      <hooter className="footer">
         <div className="button">
           <div className="icon">
             <i className="fab fa-twitter"></i>
@@ -69,6 +69,34 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               YouTube
+            </a>
+          </span>
+        </div>
+        <div className="button">
+          <div className="icon">
+            <i className="fab fa-facebook-f"></i>
+          </div>
+          <span>
+            <a
+              href="http://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              YouTube
+            </a>
+          </span>
+        </div>
+        <div className="button">
+          <div className="icon">
+            <i className="fab fa-github"></i>
+          </div>
+          <span>
+            <a
+              href="http://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              PornHub
             </a>
           </span>
         </div>
