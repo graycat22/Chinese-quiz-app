@@ -97,15 +97,14 @@ const QuizPage = () => {
     <div className="quiz-page">
       <div className="slide-bar"></div>
       <h2>クイズページ</h2>
-
-      <>
+      <div className="quiz-wrap">
         {showContent ? (
           isSelected ? (
-            <div className="quiz-wrap">
+            <div className="quiz-content">
+              <p>
+                第{currentQuizIndex + 1}問！{quizArray[currentQuizIndex].単語}
+              </p>
               <div>
-                <p>
-                  第{currentQuizIndex + 1}問！{quizArray[currentQuizIndex].単語}
-                </p>
                 {fakeArray.slice(0, 4).map((fakeItem, index) => (
                   <button
                     key={index}
@@ -136,21 +135,24 @@ const QuizPage = () => {
             </div>
           )
         ) : (
-          <div>
-            <p>お疲れ様でした</p>
-            <p>間違えた問題数は{mistakes.length}問です</p>
-            <Link to="/">
-              <button>終了</button>
-            </Link>
-            <sapn>
-              <button>間違えた問題を見る</button>
-            </sapn>
-            <Link to="/">
-              <button>Back</button>
-            </Link>
+          <div className="quiz-result-wrap">
+            <div className="quiz-result">
+              <p>お疲れ様でした</p>
+              <p>間違えた問題数は{mistakes.length}問です</p>
+              <Link to="/">
+                <button>終了</button>
+              </Link>
+              <sapn>
+                <button>間違えた問題を見る</button>
+              </sapn>
+              <Link to="/">
+                <button>Back</button>
+              </Link>
+            </div>
+            <div className="quiz-result-ansewer"></div>
           </div>
         )}
-      </>
+      </div>
 
       <>
         <p>問題数: {quantity}</p>

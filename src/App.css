@@ -362,9 +362,81 @@ img {
 
   /* 
   //////
-  ここからクイズ作成ページ/////////////////////////////////////
+  ここからクイズ表示ページ/////////////////////////////////////
   //////
   */
+
+  .slide-bar {
+  }
+
+  .quiz-page {
+    width: 100%;
+    height: 100%;
+    background-color: #c0c0c0;
+  }
+
+  .quiz-wrap {
+    width: 100%;
+    height: 100%;
+  }
+
+  .quiz-content {
+    width: 100%;
+    height: auto;
+  }
+
+  .quiz-content p {
+    text-align: center; /* テキストを水平方向に中央に配置 */
+    height: 4rem; /* 高さを設定 */
+    display: flex; /* Flexboxを使用して中央揃え */
+    justify-content: center; /* テキストを水平方向に中央に配置 */
+    align-items: center; /* テキストを垂直方向に中央に配置 */
+  }
+
+  .quiz-content div {
+    height: 8rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .quiz-content div button {
+    width: 6rem;
+    height: 4rem;
+    background-color: #e07785;
+    border-radius: 10px;
+    transition: 0.5 linear;
+  }
+
+  .quiz-content div button:hover {
+    background-color: #c76774;
+    transition: 0.5s linear;
+  }
+
+  .quiz-content a {
+    display: flex;
+    justify-content: right;
+  }
+
+  .quiz-content a button {
+    width: 3rem;
+    height: 2rem;
+    background-color: #ad7cd4;
+    border-radius: 15px;
+  }
+
+  .quiz-answer {
+  }
+
+  .quiz-result-wrap {
+  }
+
+  .quiz-result {
+  }
+
+  .quiz-result-answer {
+  }
+
   /*
   #quiz-setting {
     height: 100%;

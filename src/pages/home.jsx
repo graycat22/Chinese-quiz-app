@@ -82,7 +82,7 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Facebook
+              faceboo
             </a>
           </span>
         </div>
