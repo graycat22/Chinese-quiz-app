@@ -199,6 +199,10 @@ img {
     border-radius: 3rem;
   }
 
+  input:focus {
+    border: 2px solid #831221;
+  }
+
   .quiz-quantity span {
     display: inline-block;
     width: 60px;
@@ -274,10 +278,12 @@ img {
     transition: all 0.4s;
   }
 
+  /* PCのみ
   .navbar .button:hover .icon {
     color: #24292e;
     transition: all 0.7s;
   }
+  */
 
   .navbar .button:nth-child(2) .icon i {
     padding: 1px 0 0 1px;
@@ -288,7 +294,7 @@ img {
     font-weight: 500;
     line-height: 60px;
     margin: auto;
-    padding-right: 30px;
+    padding-left: 2rem;
   }
 
   .navbar .button span a {
@@ -325,11 +331,13 @@ img {
     margin: 5% 10%;
   }
 
+  /* PCのみ
   .start-button:hover,
   back-button:hover {
     background-color: #831221;
     transition: 0.9s;
   }
+  */
 
   /*
   .start-button::after,

@@ -95,19 +95,19 @@ const QuizSetting = () => {
           <div className="navbar">
             <div className={NTbutton} onClick={() => setIsN(!isN)}>
               <div className="icon">名詞</div>
-              <span>出題するよ</span>
+              <span>{noun.length} 問</span>
             </div>
             <div className={AdjTbutton} onClick={() => setIsAdj(!isAdj)}>
               <div className="icon">形容詞</div>
-              <span>出題するよ</span>
+              <span>{adjective.length} 問</span>
             </div>
             <div className={AdvTbutton} onClick={() => setIsAdv(!isAdv)}>
               <div className="icon">副詞</div>
-              <span>出題するよ</span>
+              <span>{adverbs.length} 問</span>
             </div>
             <div className={VTbutton} onClick={() => setIsV(!isV)}>
               <div className="icon">動詞</div>
-              <span>出題するよ</span>
+              <span>{verb.length} 問</span>
             </div>
           </div>
           <div className="start-button" onClick={startQuiz}>
