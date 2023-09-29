@@ -71,8 +71,8 @@ const QuizSetting = () => {
     }
 
     if (!isN && !isV && !isAdj && !isAdv) {
-      alert("少なくとも1つは選択してください");
-      return;
+      setShowPopup(true);
+      setErrorMessage("少なくとも１つは選択してください");
     } else {
       const randomArray = [...quizArray];
       shuffleArray(randomArray);

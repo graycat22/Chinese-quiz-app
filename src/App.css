@@ -194,7 +194,7 @@ img {
   .popup {
     display: inline-block;
     position: fixed;
-    width: 9rem;
+    width: max-content;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgb(255, 170, 170);
