@@ -34,6 +34,9 @@ const QuizSetting = () => {
       setQuantity(vocabulary.length);
     } else {
       setQuantity(settedValue);
+      if (showPopup) {
+        setShowPopup(false); // ポップアップを閉じる
+      }
     }
   };
 
