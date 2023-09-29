@@ -13,6 +13,8 @@ const QuizSetting = () => {
   const [isAdj, setIsAdj] = useState(false);
   const [isAdv, setIsAdv] = useState(false);
   const [isV, setIsV] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const NTbutton = isN ? "button selected" : "button";
@@ -23,13 +25,28 @@ const QuizSetting = () => {
   const handleQuantity = (event) => {
     const settedValue = parseInt(event.target.value, 10);
     if (isNaN(settedValue) || settedValue < 1) {
-      alert("だめです");
+      setErrorMessage("少なすぎます");
+      setShowPopup(true);
+      setQuantity(1);
     } else if (settedValue > vocabulary.length) {
-      alert("問題数多すぎまる");
+      setErrorMessage("多すぎます");
+      setShowPopup(true);
       setQuantity(vocabulary.length);
     } else {
       setQuantity(settedValue);
     }
+  };
+
+  const Popup = () => {
+    const handleClick = () => {
+      setShowPopup(false);
+    };
+
+    return (
+      <div className="popup-overlay" onClick={handleClick}>
+        <div className="popup">{errorMessage}</div>
+      </div>
+    );
   };
 
   const startQuiz = () => {
@@ -69,7 +86,7 @@ const QuizSetting = () => {
   return (
     <>
       <div className="navi-relative">
-        <p>Select the quantity</p>
+        {showPopup && <Popup />}
         <div className="quiz-quantity">
           <span
             onClick={() => handleQuantity({ target: { value: quantity - 1 } })}

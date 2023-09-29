@@ -181,6 +181,29 @@ img {
     overflow: hidden;
   }
 
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+  }
+
+  .popup {
+    display: inline-block;
+    position: fixed;
+    width: 9rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 170, 170);
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
   .quiz-quantity {
     position: absolute;
     width: max-content;
