@@ -187,21 +187,51 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0);
     z-index: 9999;
+    animation-name: fadeInOverlay;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInOverlay {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+      opacity: 0;
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.2);
+      opacity: 1;
+    }
   }
 
   .popup {
     display: inline-block;
     position: fixed;
     width: max-content;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: rgb(255, 170, 170);
     padding: 20px;
-    margin-top: 40px;
     border-radius: 10px;
     text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation-name: slideInFromTop;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes slideInFromTop {
+    from {
+      top: -100px; /* 画面上部の外側から開始 */
+      opacity: 0;
+    }
+    to {
+      top: 40px;
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
   }
 
   .quiz-quantity {
