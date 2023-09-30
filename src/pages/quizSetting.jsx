@@ -90,13 +90,34 @@ const QuizSetting = () => {
     <>
       <div className="navi-relative">
         {showPopup && <Popup />}
+        <div className="nextpage">111</div>
+        <p>問題数は...</p>
         <div className="quiz-quantity">
-          <span
-            onClick={() => handleQuantity({ target: { value: quantity - 1 } })}
-          >
-            －
-          </span>
+          <div className="minusbutton-container">
+            <span
+              onClick={() =>
+                handleQuantity({ target: { value: quantity - 1 } })
+              }
+            >
+              －1
+            </span>
+            <span
+              onClick={() =>
+                handleQuantity({ target: { value: quantity - 10 } })
+              }
+            >
+              －10
+            </span>
+            <span
+              onClick={() =>
+                handleQuantity({ target: { value: quantity - 100 } })
+              }
+            >
+              －100
+            </span>
+          </div>
           <input
+            type="number"
             name="quantity"
             pattern="^[1-9][0-9]*$"
             inputMode="numeric"
@@ -105,11 +126,29 @@ const QuizSetting = () => {
             max={vocabulary.length}
             onChange={handleQuantity}
           />
-          <span
-            onClick={() => handleQuantity({ target: { value: quantity + 1 } })}
-          >
-            ＋
-          </span>
+          <div className="plusbutton-container">
+            <span
+              onClick={() =>
+                handleQuantity({ target: { value: quantity + 1 } })
+              }
+            >
+              ＋1
+            </span>
+            <span
+              onClick={() =>
+                handleQuantity({ target: { value: quantity + 10 } })
+              }
+            >
+              ＋10
+            </span>
+            <span
+              onClick={() =>
+                handleQuantity({ target: { value: quantity + 100 } })
+              }
+            >
+              ＋100
+            </span>
+          </div>
         </div>
         <div className="navi-absolute">
           <div className="navbar">
